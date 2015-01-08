@@ -1,0 +1,165 @@
+<style type="text/css">
+  .Graph--Right {
+
+  }
+
+  .Graph--Background {
+    background-image: url('/img/section.jpg');
+    background-repeat: repeat-y;
+    background-size: 100%;
+    border: 1px solid #231f20;
+    width: 245px;
+    height: 680px;
+
+    position: relative;
+    margin-top: 7px;
+  }
+
+  .Graph--Bar {
+    width: 30px;
+    height: 500px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    height: 100px;
+
+    background-color: #009e58;
+  }
+
+  .Graph--Amount {
+    color: #13a565;
+    height: 15px;
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 50px;
+    text-align: center;
+    margin-top: -20px;
+
+    -ms-transition: height 1s linear;
+    -moz-transition: height 1s linear;
+    -o-transition: height 1s linear;
+    -webkit-transition: height 1s linear;
+    transition: height 1s linear;
+
+  }
+
+  .Graph--Labor-Savings {
+    position: absolute;
+    bottom: 0px;
+    left:40px;
+  }
+
+  .Graph--Water-Savings {
+    position: absolute;
+    bottom: 0px;
+    left:110px;;
+  }
+
+  .Graph--Chemical-Savings {
+    position: absolute;
+    bottom: 0px;
+    left:180px;
+  }
+
+  .Graph--Legend-Left {
+    width: 70px;
+    float: left;
+    margin-left: 10px;
+  }
+
+  .Graph--Right {
+    float: right;
+    width: 247px;
+    margin-right: 10px;
+  }
+
+  .Graph--Key-Bottom {
+    clear: right;
+    margin-top: 8px;
+    padding-left: 70px;
+    margin: 0px 10px;
+    padding-bottom: 10px;
+
+  }
+
+  .Graph--Key-Bottom li {
+    width: 50px;
+    display: block;
+    color: black;
+    font-style: italic;
+    margin: 0px 0px 0px 26px;
+    float: left;
+    padding-top: 3px;
+  }
+
+  .Graph--Clear {
+    clear: both;
+    height: 1px;
+  }
+
+  .Graph--Legend-Left {
+
+    overflow: visible;
+  }
+
+  .Graph--Legend-Left li {
+    display: block;
+    height: 68px;
+    width: 70px;
+    overflow: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    color: black;
+
+  }
+</style>
+
+<div class="Graph--Legend-Left">
+  <ol>
+    <li>$10,000</li>
+    <li>$9,000</li>
+    <li>$8,000</li>
+    <li>$7,000</li>
+    <li>$6,000</li>
+    <li>$5,000</li>
+    <li>$4,000</li>
+    <li>$3,000</li>
+    <li>$2,000</li>
+    <li>$1,000</li>
+    <li>$0</li>
+  </ol>
+</div>
+
+<div class="Graph--Right">
+  <div class="Graph--Background">
+    <ul id="Graph--Bars">
+      <li class="Graph--Labor-Savings">
+        <div class="Graph--Bar">
+          <span class="Graph--Amount">$2,000</span>
+        </div>
+      </li>
+      <li class="Graph--Water-Savings">
+        <div class="Graph--Bar">
+          <span class="Graph--Amount">$1,000</span>
+        </div>
+      </li>
+      <li class="Graph--Chemical-Savings">
+        <div class="Graph--Bar">
+          <span class="Graph--Amount">$500</span>
+        </div>
+      </li>
+    </li>
+  </div>
+</div>
+
+<div class="Graph--Key-Bottom">
+  <ul>
+    <li style="margin-left: 30px;">Labor Savings</li>
+    <li style="margin-left: 20px;">Water Savings (gallons)</li>
+    <li style="margin-left: 20px;">Chemical Savings</li>
+  </ul>
+</div>
+
+<div class="Graph--Clear"></div>

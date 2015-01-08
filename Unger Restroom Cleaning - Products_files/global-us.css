@@ -1,0 +1,1829 @@
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_blank
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/* Colors ================================================================================ */
+/* Green => #229459, Grey => #e8e8e8, Text Grey => #87888a => #777777, Black => #272729 */
+
+@font-face{
+font-family:"FrutigerLTW01-67BoldCn";
+src:url("http://www.ungerglobal.com/usa/skin/frontend/default/unger/fonts/a3a15351-8e3c-4c29-82e6-15b106c2181f.eot?#iefix");
+src:url("http://www.ungerglobal.com/usa/skin/frontend/default/unger/fonts/a3a15351-8e3c-4c29-82e6-15b106c2181f.eot?#iefix") format("eot"),url("http://www.ungerglobal.com/usa/skin/frontend/default/unger/fonts/f1f95a55-f0c6-4fb5-8939-b93160b7a751.woff") format("woff"),url("http://www.ungerglobal.com/usa/skin/frontend/default/unger/fonts/032fd83c-fe79-47fa-9dda-0a3f03bd0506.ttf") format("truetype"),url("http://www.ungerglobal.com/usa/skin/frontend/default/unger/fonts/17f04727-b70e-460f-8b5c-c8cd21771240.svg#17f04727-b70e-460f-8b5c-c8cd21771240") format("svg");
+}
+
+/* Reset ================================================================================= */
+* { margin:0; padding:0; border:0; outline:0; font-size:100%; background:transparent; vertical-align:baseline; font:inherit;}
+
+body          { /*background:transparent url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/bg.jpg') 0 0 repeat-x;*/ background-color:#e5e5e5; font:12px/1.35 "FrutigerLTW01-67BoldCn", Arial, Helvetica, sans-serif; color:#777777; text-align:center; }
+
+img           { border:0; vertical-align:top; }
+
+a             { color:#229459; text-decoration:none; }
+a:hover       { text-decoration:none; }
+.breadcrumbs a:hover {text-decoration:underline;}
+:focus        { outline:0; }
+
+/* Headings */
+h1            { font-size:25px; font-weight:normal; line-height:1.5; color:#229459; }
+h2            { font-size:25px; font-weight:normal; line-height:1.25; color:#229459; }
+h3            { font-size:14px; font-weight:normal; line-height:1.25; color:#229459; }
+h4            { font-size:14px; font-weight:normal; color:#229459; }
+h5            { font-size:12px; font-weight:normal; color:#229459; }
+h6            { font-size:11px; font-weight:normal; color:#229459; }
+
+/* Forms */
+form          { display:inline; }
+fieldset      { border:0; }
+legend        { display:none; }
+
+/* Table */
+table         { font-family:Arial, Helvetica, sans-serif; border:0; border-collapse:collapse; border-spacing:0; empty-cells:show; font-size:100%; }
+caption,th,td { vertical-align:top; text-align:left; font-weight:normal; }
+
+/* Content */
+strong        { font-weight:normal; }
+.breadcrumbs strong {font-weight:bold; color:#000000;}
+address       { font-style:normal; }
+cite          { font-style:normal; }
+q,
+blockquote    { quotes:none; }
+q:before,
+q:after       { content:''; }
+small,big     { font-size:1em; }
+sup           { font-size:1em; vertical-align:top; }
+
+/* Lists */
+ul,ol         { list-style:none; }
+
+/* Tools */
+.hidden       { display:block !important; border:0 !important; margin:0 !important; padding:0 !important; font-size:0 !important; line-height:0 !important; width:0 !important; height:0 !important; overflow:hidden !important; }
+.nobr         { white-space:nowrap !important; }
+.wrap         { white-space:normal !important; }
+.a-left       { text-align:left !important; }
+.a-center     { text-align:center !important; }
+.a-right      { text-align:right !important; }
+.v-top        { vertical-align:top; }
+.v-middle     { vertical-align:middle; }
+.f-left,
+.left         { float:left !important; }
+.f-right,
+.right        { float:right !important; }
+.f-none       { float:none !important; }
+.f-fix        { float:left; width:100%; }
+.no-display   { display:none; }
+.no-margin    { margin:0 !important; }
+.no-padding   { padding:0 !important; }
+.no-bg        { background:none !important; }
+/* ======================================================================================= */
+
+
+/* Layout ================================================================================ */
+.wrapper {background:#e5e5e5 url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/content-back.png') repeat-x right bottom;padding-bottom:37px; min-width:960px;}
+.page { width:912px; margin:0 auto; padding:10px 24px 64px 24px; text-align:left; background-color:#ffffff; box-shadow:0 4px 2px -1px #cfcfcf; margin-bottom:37px; position:relative;}
+.page:before { content:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/bigshadow.png); position:absolute; bottom:-9px; left:-41px;}
+.page-print { background:#fff; padding:20px; text-align:left; }
+.page-empty { background:#fff; padding:20px; text-align:left; }
+.page-popup { padding:20px; text-align:left; }
+.main-container {}
+.cms-index-index .main { margin:2px 0 10px; }
+.main { margin:10px 0 10px; }
+
+/* Base Columns */
+.col-left { float:left; width:207px; padding-bottom:17px; padding-top:5px; /*padding:5px 5px 0;*/ }
+.col-main { float:left; width:736px; padding:5px; }
+.col-right { float:right; width:230px; padding:5px 5px 0; }
+
+/* 1 Column Layout */
+.col1-layout .col-main { float:none; width:auto; }
+
+/* 2 Columns Layout */
+.col2-left-layout .col-main { width:670px; float:right; }
+.col2-right-layout .col-main {}
+
+/* 3 Columns Layout */
+.col3-layout .col-main { width:484px; margin-left:10px; }
+.col3-layout .col-wrapper { float:left; width:748px; }
+.col3-layout .col-wrapper .col-main { float:right; }
+
+/* Content Columns */
+.col2-set .col-1 { float:left; width:48.6%; }
+.col2-set .col-2 { float:right; width:48.5%; }
+.col2-set .col-narrow { width:33%; }
+.col2-set .col-wide { width:65%; }
+
+.col3-set .col-1 { float:left; width:32%; }
+.col3-set .col-2 { float:left; width:32%; margin-left:2%; }
+.col3-set .col-3 { float:right; width:32%; }
+
+.col4-set .col-1 { float:left; width:23.5%; }
+.col4-set .col-2 { float:left; width:23.5%; margin:0 2%; }
+.col4-set .col-3 { float:left; width:23.5%; }
+.col4-set .col-4 { float:right; width:23.5%; }
+
+.col5-set .col-1 { float:left; width:18.4%; }
+.col5-set .col-2 { float:left; width:18.4%; margin:0 2%; }
+.col5-set .col-3 { float:left; width:18.4%; }
+.col5-set .col-4 { float:left; width:18.4%; margin:0 2%; }
+.col5-set .col-5 { float:right; width:18.4%; }
+/* ======================================================================================= */
+
+
+/* Global Styles ========================================================================= */
+/* Form Elements */
+input,select,textarea,button { font:14px Arial, Helvetica, sans-serif; vertical-align:middle; color:#ababab; }
+input.input-text,select,textarea { background:#fff; border:1px solid #ddd; }
+input.input-text,textarea { padding:2px; }
+select { padding:1px; }
+select option { padding-right:10px; }
+select.multiselect option { border-bottom:1px solid #ddd; padding:2px 5px; }
+select.multiselect option:last-child { border-bottom:0; }
+textarea { overflow:auto; }
+input.radio { margin-right:3px; }
+input.checkbox { margin-right:3px; }
+input.qty { width:2.5em !important; }
+button.button::-moz-focus-inner { padding:0; border:0; } /* FF Fix */
+button.button { -webkit-border-fit:lines; } /* <- Safari & Google Chrome Fix */
+button.button { overflow:visible; width:auto; border:0; padding:0 15px; margin:0; cursor:pointer; background:url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/button.png') repeat-x scroll 0 0 transparent; height:43px; }
+button.button span { float:left; height:21px; background:transparent url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/bkg_button.gif) 0 0 no-repeat; padding:0 0 0 8px; font:bold 12px/21px Arial, Helvetica, sans-serif; text-align:center; white-space:nowrap; color:#fff; }
+button.button span span { background-position:100% 0; padding:0 12px 0 4px; }
+button.disabled {}
+button.disabled span {}
+
+button.btn-checkout span {}
+button.btn-checkout.no-checkout {}
+
+p.control input.checkbox,
+p.control input.radio { margin-right:6px; }
+/* Form Highlight */
+/*input.input-text:focus,select:focus,textarea:focus {}*/
+/*.highlight { background:#efefef; }*/
+
+/* Form lists */
+/* Grouped fields */
+/*.form-list { width:535px; margin:0 auto; overflow:hidden; }*/
+.form-list li { margin:0 0 8px; }
+.form-list label { float:left; color:#111; font-weight:normal; position:relative; z-index:0; }
+.form-list label.required {}
+.form-list label.required em { float:right; font-style:normal; color:#eb340a; position:absolute; top:0; right:-8px; }
+.form-list li.control label { float:none; }
+.form-list li.control input.radio,
+.form-list li.control input.checkbox { margin-right:6px; }
+.form-list li.control .input-box { clear:none; display:inline; width:auto; }
+/*.form-list li.fields { margin-right:-15px; }*/
+.form-list .input-box { display:block; clear:both; width:260px; }
+.form-list .field { float:left; width:275px; }
+.form-list input.input-text { width:254px; }
+.form-list textarea { width:254px; height:10em; }
+.form-list select { width:260px; }
+.form-list li.wide .input-box { width:535px; }
+.form-list li.wide input.input-text { width:529px; }
+.form-list li.wide textarea { width:529px; }
+.form-list li.wide select { width:535px; }
+.form-list li.additional-row { border-top:1px solid #ccc; margin-top:10px; padding-top:7px; }
+.form-list li.additional-row .btn-remove { float:right; margin:5px 0 0; }
+.form-list .input-range input.input-text { width:74px; }
+/* Customer */
+.form-list .customer-name-prefix .input-box,
+.form-list .customer-name-suffix .input-box,
+.form-list .customer-name-prefix-suffix .input-box,
+.form-list .customer-name-prefix-middlename .input-box,
+.form-list .customer-name-middlename-suffix .input-box,
+.form-list .customer-name-prefix-middlename-suffix .input-box { width:auto; }
+
+.form-list .name-prefix { width:65px; }
+.form-list .name-prefix select { width:55px; }
+.form-list .name-prefix input.input-text { width:49px; }
+
+.form-list .name-suffix { width:65px; }
+.form-list .name-suffix select { width:55px; }
+.form-list .name-suffix input.input-text { width:49px; }
+
+.form-list .name-middlename { width:70px; }
+.form-list .name-middlename input.input-text { width:49px; }
+
+.form-list .customer-name-prefix-middlename-suffix .name-firstname,
+.form-list .customer-name-prefix-middlename .name-firstname { width:140px; }
+.form-list .customer-name-prefix-middlename-suffix .name-firstname input.input-text,
+.form-list .customer-name-prefix-middlename .name-firstname input.input-text { width:124px; }
+.form-list .customer-name-prefix-middlename-suffix .name-lastname { width:205px; }
+.form-list .customer-name-prefix-middlename-suffix .name-lastname input.input-text { width:189px; }
+
+.form-list .customer-name-prefix-suffix .name-firstname { width:210px; }
+.form-list .customer-name-prefix-suffix .name-lastname { width:205px; }
+.form-list .customer-name-prefix-suffix .name-firstname input.input-text,
+.form-list .customer-name-prefix-suffix .name-lastname input.input-text { width:189px; }
+
+.form-list .customer-name-prefix-suffix .name-firstname { width:210px; }
+.form-list .customer-name-prefix-suffix .name-lastname { width:205px; }
+.form-list .customer-name-prefix-suffix .name-firstname input.input-text,
+.form-list .customer-name-prefix-suffix .name-lastname input.input-text { width:189px; }
+
+.form-list .customer-name-prefix .name-firstname,
+.form-list .customer-name-middlename .name-firstname { width:210px; }
+
+.form-list .customer-name-suffix .name-lastname,
+.form-list .customer-name-middlename .name-firstname,
+.form-list .customer-name-middlename-suffix .name-firstname,
+.form-list .customer-name-middlename-suffix .name-lastname { width:205px; }
+
+.form-list .customer-name-prefix .name-firstname input.input-text,
+.form-list .customer-name-suffix .name-lastname input.input-text,
+.form-list .customer-name-middlename .name-firstname input.input-text,
+.form-list .customer-name-middlename-suffix .name-firstname input.input-text,
+.form-list .customer-name-middlename-suffix .name-lastname input.input-text { width:189px; }
+
+.form-list .customer-dob .dob-month,
+.form-list .customer-dob .dob-day,
+.form-list .customer-dob .dob-year { float:left; width:85px; }
+.form-list .customer-dob input.input-text { display:block; width:74px; }
+.form-list .customer-dob label { font-size:10px; font-weight:normal; color:#888; }
+.form-list .customer-dob .dob-day,
+.form-list .customer-dob .dob-month { width:60px; }
+.form-list .customer-dob .dob-day input.input-text,
+.form-list .customer-dob .dob-month input.input-text { width:46px; }
+.form-list .customer-dob .dob-year { width:140px; }
+.form-list .customer-dob .dob-year input.input-text { width:134px; }
+
+.buttons-set { clear:both; margin:5px 0 0; padding:5px 0 5px 35px; }
+.contacts-index-index .buttons-set {padding:0;}
+.buttons-set .back-link { float:left; }
+.buttons-set button.button { float:left; }
+.buttons-set p.required { margin:0 0 5px; }
+
+.buttons-set-order {}
+
+.fieldset { border:1px solid #ddd; background:#fefefe; padding:22px 25px 12px 33px; margin:28px 0; }
+.contacts-index-index .fieldset {width:62%;}
+
+.fieldset .legend { float:left; font-weight:normal; font-size:13px; border:1px solid #fefefe; background:#dedede; color:#333; margin:-30px 0 0 -10px; padding:0 8px; position:relative; }
+
+/* Form Validation */
+.validation-advice { clear:both; min-height:13px; margin:3px 0 0; padding-left:17px; font-size:10px; line-height:13px; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/validation_advice_bg.gif) 2px 1px no-repeat; color:#f00; }
+.validation-failed { border:1px dashed #f00 !important; background:#faebe7 !important; }
+.validation-passed {}
+p.required { font-size:10px; text-align:left; color:#f00; }
+/* Expiration date and CVV number validation fix */
+.v-fix { float:left; }
+.v-fix .validation-advice { display:block; width:12em; margin-right:-12em; position:relative; }
+
+/* Global Messages  */
+.success { color:#3d6611; font-weight:normal; }
+.error { color:#f00; font-weight:normal; }
+.notice { color:#ccc; }
+
+.messages,
+.messages ul { list-style:none !important; margin:0 !important; padding:0 !important; }
+.messages { width:100%; overflow:hidden; }
+.messages li { margin:0 0 10px; }
+.messages li li { margin:0 0 3px; }
+.error-msg,
+.success-msg,
+.note-msg,
+.notice-msg { border-style:solid !important; border-width:1px !important; background-position:10px 9px !important; background-repeat:no-repeat !important; min-height:24px !important; padding:8px 8px 8px 32px !important; font-size:11px !important; font-weight:normal !important; }
+.error-msg { border-color:#f16048; background-color:#faebe7; background-image:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/i_msg-error.gif); color:#df280a; }
+.success-msg { border-color:#446423; background-color:#eff5ea; background-image:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/i_msg-success.gif); color:#3d6611; }
+.note-msg,
+.notice-msg { border:1px solid #bbbbbb; background-color:#ffffff; /*background-image:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/i_msg-note.gif); */ box-shadow:0 1px 2px 2px #cccccc; color:#444444; }
+
+/* BreadCrumbs */
+.breadcrumbs { font-family:Arial, Helvetica, sans-serif; padding:0 5px 10px; font-size:10px; /* margin-left:231px; */}
+.cms-index-index .breadcrumbs, .cms-products-cms-html .breadcrumbs {margin-left:0;}
+.breadcrumbs li { display:inline; color:#777777; }
+.breadcrumbs li a { color:#777777; text-decoration:none; font-size:10px; }
+.breadcrumbs li span img { padding:2px 0 0 5px; }
+
+/* Slideshow */
+.slides {position:relative;}
+.slidesjs-pagination {position:absolute;bottom:21px;left:12px;z-index:10;}
+.slidesjs-pagination li {float:left;padding:1px;list-style:none;}
+.slidesjs-pagination li a { padding:4px; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/productslider-nonactive.png) 0 0 no-repeat; color:transparent; }
+.slidesjs-pagination li a:hover, .slidesjs-pagination li a.active { width:10px; height:9px; overflow:hidden; background-image:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/productslider-active.png);}
+.cms-products-cms-html .main, .cms-index-index .main {position:relative;}
+.catalog-category-view .main:before {position:absolute;content:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/slideshow-shadow-products.png);top:332px;left:233px;width:726px;height:42px;}
+.cms-products-cms-html .main:before, .cms-index-index .main:before {position:absolute;content:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/slideshow-shadow.png);top:289px;left:-25px;width:960px;height:62px;}
+.cms-index-index .main:before {top:278px;} /* US-Page */
+.category-hiflotm-accessories .main:before { display: none; }
+.category-img-slides {height:323px;padding-bottom:25px;position:relative;}
+.cms-index-index .category-img-slides {padding-bottom:10px;}
+.slidesjs-navigation {color:#ffffff; display:none !important;}
+
+/* Page Heading */
+.page-title { /* border-bottom:1px solid #ddd; */ padding:0 0 5px; margin:0 0 10px; }
+.catalog-category-view .page-title {padding-bottom:2px;}
+.page-title h1,
+.page-title h2 { /* font-size:18px; color:#000; */ }
+.page-title .separator { margin:0 3px; }
+.page-title .link-rss { float:right; }
+.title-buttons { text-align:right; }
+.title-buttons h1,
+.title-buttons h2,
+.title-buttons h3,
+.title-buttons h4,
+.title-buttons h5,
+.title-buttons h6 { float:left; }
+
+.subtitle,
+.sub-title { clear:both; }
+
+/* Pager */
+.pager { padding:5px; margin:5px 0; text-align:center; }
+.pager .amount { float:left; }
+.pager .limiter { float:right; }
+.pager .pages { margin:0 135px; }
+.pager .pages ol { display:inline; }
+.pager .pages li { display:inline; }
+.pager .pages .current {}
+
+/* Sorter */
+.sorter { padding:5px; margin:5px 0; }
+.sorter .view-mode { float:left; }
+.sorter .sort-by { float:right; }
+.sorter .link-feed {}
+
+/* Toolbar */
+.category-products .toolbar {display:none;}
+.toolbar .pager {}
+.toolbar .sorter {}
+.toolbar-bottom {}
+
+/* Data Table */
+.data-table { width:100%; }
+.data-table th { padding:5px; border:1px solid #ddd; font-weight:bold; white-space:nowrap; }
+.data-table td { padding:5px; border:1px solid #ddd; }
+.data-table thead { background-color:#ffffff; }
+.data-table tbody {}
+.data-table tfoot {}
+.data-table tr.first {}
+.data-table tr.last {}
+.data-table tr.odd {}
+.data-table tr.even { background-color:#ffffff; }
+.data-table tbody.odd {}
+.data-table tbody.odd td { border-width:0 1px; }
+.data-table tbody.even { background-color:#ffffff; }
+.data-table tbody.even td { border-width:0 1px; }
+.data-table tbody.odd tr.border td,
+.data-table tbody.even tr.border td { border-bottom-width:1px; }
+.data-table th .tax-flag { white-space:nowrap; font-weight:normal; }
+.data-table td.label,
+.data-table th.label { font-weight:normal; background-color:#ffffff; }
+.data-table td.value {}
+
+/* Shopping cart total summary row expandable to details */
+tr.summary-total { cursor:pointer; }
+tr.summary-total td {}
+tr.summary-total .summary-collapse { float:right; text-align:right; padding-left:20px; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/bkg_collapse.gif) 0 4px no-repeat; cursor:pointer; }
+tr.show-details .summary-collapse { background-position:0 -53px; }
+tr.show-details td {}
+tr.summary-details td { font-size:11px; background-color:#dae1e4; color:#626465; }
+tr.summary-details-first td { border-top:1px solid #d2d8db; }
+tr.summary-details-excluded { font-style:italic; }
+
+/* Shopping cart tax info */
+.cart-tax-info { display:block; }
+.cart-tax-info,
+.cart-tax-info .cart-price { padding-right:20px; }
+.cart-tax-total { display:block; padding-right:20px; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/bkg_collapse.gif) 100% 4px no-repeat; cursor:pointer; }
+.cart-tax-info .price,
+.cart-tax-total .price { display:inline !important; font-weight:normal !important; }
+.cart-tax-total-expanded { background-position:100% -53px; }
+
+/* Class: std - styles for admin-controlled content */
+.std .subtitle { padding:0; }
+.std ol.ol { list-style:decimal outside; padding-left:1.5em; }
+.std ul.disc { list-style:disc outside; padding-left:18px; margin:0 0 10px; }
+.std dl dt { font-weight:normal; }
+.std dl dd { margin:0 0 10px; }
+.std ul,
+.std ol,
+.std dl,
+.std p,
+.std address,
+.std blockquote { margin:0 0 1em; padding:0; }
+.std ul { list-style:disc inside; /*padding-left:1.5em;*/ }
+.cms-about-us-html .std ul {padding-left:1.5em;}
+.std ol { list-style:decimal outside; padding-left:1.5em; }
+.std ul ul { list-style-type:circle; }
+.std ul ul,
+.std ol ol,
+.std ul ol,
+.std ol ul { margin:.5em 0; }
+.std dt { font-weight:normal; }
+.std dd { padding:0 0 0 1.5em; }
+.std blockquote { font-style:italic; padding:0 0 0 1.5em; }
+.std address { font-style:normal; }
+.std b,
+.std strong { font-weight:normal; }
+.std i,
+.std em { font-style:italic; }
+
+/* Misc */
+.links li {/*display:inline;*/ display:block; float:left; }
+.links li.first { padding-left:0 !important; }
+.links li.last { background:none !important; padding-right:0 !important; }
+
+.link-cart { font-weight:normal; color:#f00; }
+.link-wishlist { font-weight:normal; }
+.link-reorder { font-weight:normal; }
+.link-compare { font-weight:normal; }
+.link-print { background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/i_print.gif) 0 2px no-repeat; padding:2px 0 2px 25px; }
+.link-rss { background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/i_rss.gif) 0 1px no-repeat; padding-left:18px; white-space:nowrap; }
+.btn-remove { display:block; width:11px; height:11px; font-size:0; line-height:0; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/btn_remove.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
+.btn-remove2 { display:block; width:16px; height:16px; font-size:0; line-height:0; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/btn_trash.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
+.btn-edit    { display:block; width:11px; height:11px; font-size:0; line-height:0; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/btn_edit.gif) 0 0 no-repeat; text-indent:-999em; overflow:hidden; }
+
+.cards-list dt { margin:5px 0 0; }
+.cards-list .offset { padding:2px 0 2px 20px; }
+
+
+.separator { margin:0 3px; }
+
+.divider { clear:both; display:block; font-size:0; line-height:0; height:1px; margin:10px 0; background:#ddd; text-indent:-999em; overflow:hidden; }
+
+/* Noscript Notice */
+.noscript { border:1px solid #ddd; border-width:0 0 1px; background:#ffff90; font-size:12px; line-height:1.25; text-align:center; color:#2f2f2f; }
+.noscript .noscript-inner { width:960px; margin:0 auto; padding:12px 0 12px; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/i_notice.gif) 20px 50% no-repeat; }
+.noscript p { margin:0; }
+
+/* Demo Notice */
+.demo-notice { margin:0; padding:6px 10px; background:#d75f07; font-size:12px; line-height:1.15; text-align:center; color:#fff; }
+
+/* Cookie Notice */
+.notice-cookie { border-bottom:1px solid #cfcfcf; background:#ffff90; font-size:12px; line-height:1.25; text-align:center; color:#2f2f2f; }
+.notice-cookie .notice-inner { width:870px; margin:0 auto; padding:12px 0 12px 80px; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/i_notice.gif) 20px 25px no-repeat; text-align:left; }
+.notice-cookie .notice-inner p { margin:0 0 10px; border:1px dotted #cccc73; padding:10px; }
+.notice-cookie .notice-inner .actions { }
+
+/* ======================================================================================= */
+
+
+/* Header ================================================================================ */
+.logo { float:left; }
+.logo-2 { float:right; display:none; }
+.logo-50 { float:right; }
+.header-wrapper {background:transparent url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/header/headermenu.png') repeat-x right top;border-top:1px solid #737375;min-width:960px;}
+.header-container {width: 960px; margin: 0 auto; }
+.header { padding:10px 0 10px 10px;border-top:1px solid #737375;}
+.header .form-language select {background:transparent; width:172px; font-size: 12px; padding:0px 4px 0px 4px; line-height:1; border:0; border-radius:0; height: 19px; -webkit-appearance: none; color:#a4a4a4;}
+.header .form-language select option {background-color:#3F3F40;}
+.header .form-language select option[selected] {background-color:#E5E5E5;color:#000000;}
+.header .form-language {background:transparent url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/header/language-switcher.png') no-repeat right center; width:148px; overflow:hidden; border: 1px solid #5b5b5b; border-radius:3px;}
+.header .logo { float:left; text-decoration:none !important; clear:both; }
+.header .logo strong { position:absolute; top:-999em; left:-999em; width:0; height:0; font-size:0; line-height:0; text-indent:-999em; overflow:hidden; }
+.header h1.logo { margin:0; padding:0; }
+.header .welcome-msg { font-weight:normal; text-align:right; }
+.header .welcome-msg a {}
+.header .links { float:right; position:relative; }
+.header .links:after {content:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/header/headermenu-seperator.png);position:absolute;top:-12px;left:0;}
+.header .links li a {padding:13px 9px 13px 9px;color:#ffffff;text-decoration:none; font-size:16px;/*letter-spacing:-1px;*/position:relative;}
+.header .links li a:after {content:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/header/headermenu-seperator.png);position:absolute;top:0;right:0;width:0;display:block;}
+.header .links li#tmenu_ungretail a:after {content:none;}
+.header .links li a:hover, .header .links li a.active {background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/header/headermenu-active.png) repeat-x right top;}
+.header .links li#tmenu_ungretail a:hover {background:none;}
+.header .form-language { clear:both; float:left; }
+.header-bottom .form-search { text-align:right; }
+.header-bottom .form-search .search-autocomplete { z-index:999; }
+.header-bottom .form-search .search-autocomplete ul { border:1px solid #ddd; background-color:#fff; }
+.header-bottom .form-search .search-autocomplete li { padding:3px; border-bottom:1px solid #ddd; cursor:pointer; }
+.header-bottom .form-search .search-autocomplete li .amount { float:right; font-weight:normal; }
+.header-bottom .form-search .search-autocomplete li.selected {}
+.header-bottom .form-search input {padding:7px;border:1px solid #bbbbbb;box-shadow:0 1px 2px 2px #cccccc;}
+.header-bottom .form-search button {background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/buttons/search.png) no-repeat center center;width:36px;height:33px;border:1px solid #bbbbbb;box-shadow:0 1px 2px 2px #cccccc;}
+.header-bottom {padding-top:20px;height:190px;}
+.header-container .top-container { clear:both; text-align:right; }
+
+/********** < Navigation */
+.header-bottom {position:relative;}
+.nav-container { position:absolute; right:-14px; bottom:0; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/header/header-menu.png) no-repeat center center; width:169px; height:43px; }
+#nav { padding:5px 0 5px 13px; font-size:13px; }
+
+/* All Levels */
+#nav li { text-align:left; position:relative; width:90%;}
+#nav li.over { z-index:998; }
+#nav li.parent {}
+#nav li a { display:block; text-decoration:none; width:86%; }
+#nav li a:hover { text-decoration:none;}
+#nav li ul li a:hover span {color:#229459;}
+#nav li a span { display:block; white-space:nowrap; cursor:pointer; color:#ffffff; font-size:20px; font-weight:normal; }
+#nav li ul a span { white-space:normal; color:#000; font-size:14px; }
+#nav li ul li {width:100%;}
+#nav li ul li a {width:95%;}
+
+/* 1st Level */
+#nav li { float:left; }
+#nav li a { float:left; padding:3px 10px; font-weight:normal; color:#888; }
+#nav li a:hover { color:#000; }
+#nav li.over a,
+#nav li.active a { color:#000; }
+
+/* 2nd Level */
+#nav ul,
+#nav div { position:absolute; width:15em; top:38px; left:-10000px; border:1px solid #ddd; background:#fafafa; }
+#nav div ul { position:static; width:auto; border:none; }
+
+/* 3rd+ leven */
+#nav ul ul,
+#nav ul div { top:7px; }
+
+#nav ul li { float:none; border-bottom:1px solid #ddd; }
+#nav ul li.last { border-bottom:0; }
+#nav ul li a { float:none; padding:3px 9px; font-weight:normal; color:#888 !important; font-size:13px; }
+#nav ul li a:hover { color:#000 !important; }
+#nav ul li.active > a,
+#nav ul li.over > a { color:#000 !important; }
+
+/* Show menu */
+#nav li ul.shown-sub,
+#nav li div.shown-sub { left:0; z-index:999; }
+#nav li .shown-sub ul.shown-sub,
+#nav li .shown-sub li div.shown-sub { left:100px; }
+/********** Navigation > */
+/* ======================================================================================= */
+
+
+/* Sidebar =============================================================================== */
+.block { margin:0 0 10px; }
+.block .block-title { border-bottom:1px solid #ddd; padding:3px 10px; }
+.block .block-title strong { font-size:14px; font-weight:normal; }
+.block .block-title strong span {}
+.block .block-title a { text-decoration:none !important; }
+.block .block-subtitle { font-size:13px; font-weight:normal; }
+.block .block-content { padding:10px; }
+.block .block-content li.item { padding:5px 0; }
+.block .btn-remove,
+.block .btn-edit { float:right;}
+.block .actions { text-align:right; }
+.block .actions a { float:left; }
+.block .empty {}
+
+.block li.odd {}
+.block li.even { background-color:#f6f6f6; }
+
+/* Mini Products List */
+.mini-products-list li { padding:5px 0; }
+.mini-products-list .product-image { float:left; width:50px; padding:5px; border:1px solid #ddd; }
+.mini-products-list .product-details { margin-left:75px; }
+.mini-products-list .product-details h4 { font-size:1em; font-weight:normal; margin:0; }
+.block-cart .mini-products-list .product-details .product-name,
+.block-cart .mini-products-list .product-details .nobr small { word-wrap:break-word; }
+.block-cart .mini-products-list .product-details .nobr { white-space:normal !important; }
+
+/* Block: Account */
+.block-account {}
+
+/* Block: Currency Switcher */
+.block-currency {}
+.block-currency select { width:100%; border:1px solid #888; }
+
+/* Block: Layered Navigation */
+.block-layered-nav {}
+.block-layered-nav dt { font-weight:normal; }
+.block-layered-nav .currently {}
+.block-layered-nav .btn-remove { float:left; margin:2px 3px 0 0; }
+
+/* Block: Cart */
+.block-cart {}
+.block-cart .summary {}
+.block-cart .amount {}
+.block-cart .subtotal { text-align:center; }
+.block-cart .actions .paypal-logo { float:left; width:100%; margin:3px 0 0; text-align:right; }
+.block-cart .actions .paypal-logo .paypal-or { clear:both; display:block; padding:0 55px 5px 0; }
+
+/* Block: Wishlist */
+.block-wishlist {}
+
+/* Block: Related */
+.block-related {}
+.block-related li { padding:5px 0; }
+.block-related input.checkbox { float:left; margin-right:-20px; }
+.block-related .product { margin-left:20px; }
+.block-related .product .product-image { float:left; margin-right:-65px; }
+.block-related .product .product-details { margin-left:65px; }
+
+/* Block: Compare Products */
+.block-compare {}
+.block-compare li { padding:5px 0; }
+
+/* Block: Recently Viewed */
+.block-viewed {}
+
+/* Block: Recently Compared */
+.block-compared {}
+
+/* Block: Poll */
+.block-poll label {}
+.block-poll input.radio { float:left; margin:1px -18px 0 0; }
+.block-poll .label { display:block; margin-left:18px; }
+.block-poll li { padding:3px 9px; }
+.block-poll .actions { margin:5px 0 0; }
+.block-poll .answer { font-weight:normal; }
+.block-poll .votes { float:right; margin-left:10px; }
+
+/* Block: Tags */
+.block-tags ul,
+.block-tags li { display:inline; }
+
+/* Block: Subscribe */
+.block-subscribe {}
+
+/* Block: Reorder */
+.block-reorder {}
+.block-reorder li { padding:5px 0; }
+.block-reorder input.checkbox { float:left; margin:3px -20px 0 0; }
+.block-reorder .product-name { margin-left:20px; }
+
+/* Block: Banner */
+.block-banner {}
+.block-banner .block-content { text-align:center; }
+
+/* Block: Login */
+.block-login label { font-weight:normal; color:#666; }
+.block-login input.input-text { display:block; width:167px; margin:3px 0; }
+
+/* Paypal */
+.sidebar .paypal-logo { display:block; margin:10px 0; text-align:center; }
+.sidebar .paypal-logo a { float:none; }
+/* ======================================================================================= */
+/* Menü */
+.col-left .left-menu {position:relative; padding:8px; background-color:#444444;}
+/* .col-left .left-menu:before {position:absolute;content:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/shadow-sidebar.png);bottom:-6px;left:-22px;width:252px;height:46px;} */
+.col-left .left-menu ul {width:191px;}
+.col-left .left-menu ul li a {background:#444444; color:#ffffff;min-height:43px;display:block;text-decoration:none;}
+.col-left .left-menu ul li.active a {background:#444444 url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/leftcolumn/menuleft-active-level0.png') no-repeat top center; color:#ffffff;position:relative;}
+.col-left .left-menu ul li.active a:after {content:url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/leftcolumn/menuleft-active-level0-bottom.png'); position:absolute;bottom:-6px;}
+.col-left .left-menu ul li a {background:#444444 url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/leftcolumn/menuleft-seperator.png') no-repeat bottom center;}
+.col-left .left-menu ul li a span { padding:12px 12px 5px; display:block; font-size:17px; }
+
+.col-left .left-menu ul li ul li a { height:auto; background:#444444; min-height:0; }
+.col-left .left-menu ul li.active ul li a:after{content:'';}
+.col-left .left-menu ul li ul li a, .col-left .block-content ul li.active ul li a {background:#e8e8e8 url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/leftcolumn/menuleft-nonactive-level1.png') no-repeat top center; color:#444444;}
+.col-left .left-menu ul li ul li.active a {background:#444444 url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/leftcolumn/menuleft-active-level1.png') no-repeat top center;  min-height:31px; color:#ffffff;}
+.col-left .left-menu ul li ul li {display:none;}
+.col-left .left-menu ul li.active ul li {display:inline;}
+.col-left .left-menu ul li ul li a span { padding:7px 7px 7px 17px; font-size:13px; font-weight:normal;}
+.col-left .left-menu ul li ul li.level1 a:hover span {color:#229459;}
+.col-left .left-menu ul li ul li.active a:hover span {color:#ffffff;}
+
+.col-left .left-menu ul li.active ul li ul li {display:none;}
+.col-left .left-menu ul li.active ul li.active ul li {display:inline;}
+.col-left .left-menu ul li ul li.active ul li a {background:#ffffff;color:#444444;}
+.col-left .left-menu ul li ul li.level1 ul li a:hover span {color:#229459;}
+.col-left .left-menu ul li ul li.level1 ul li.active a span {background:transparent url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/leftcolumn/menuleft-active-level2.png') no-repeat center right; color:#229459;}
+.col-left .left-menu ul ul ul li a span { font-size:13px; font-weight:normal;}
+/* ======================================================================================= */
+/* CMS-Products (Überkategorie) */
+.cms-index-index .category-grid, .cms-products-cms-html .category-grid {list-style:none;}
+.cms-index-index .category-grid li, .cms-products-cms-html .category-grid li {float:left;padding-right:23px;}
+.cms-index-index .category-grid.first li, .cms-products-cms-html .category-grid.first li {/*padding-bottom:6px;*/}
+.cms-index-index .category-grid-last li, .cms-products-cms-html .category-grid.last li {padding-bottom:18px;}
+.cms-index-index .category-grid li:last-child, .cms-products-cms-html .category-grid li:last-child {padding-right:0;}
+.cms-index-index .category-grid h2, .cms-products-cms-html .category-grid h2 {background:#ffffff url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/categoryteaserbig-top.png') no-repeat bottom center;width:285px;height:50px;}
+.cms-index-index .category-grid h2 {color:#444444; padding:0; box-shadow:none;border-bottom:none;}
+.cms-index-index .category-grid h2 a, .cms-products-cms-html .category-grid h2 a {padding:24px 10px 0 10px; font-size:17px;color:#444444;text-decoration:none;display:block;font-weight:normal; font-size:14px;}
+.cms-index-index .category-grid p, .cms-products-cms-html .category-grid p {background:#ffffff url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/categoryteaserbig-bottom.png') no-repeat center bottom; margin:0;padding-top:1px; padding-left:1px; padding-bottom:16px;}
+.cms-products-cms-info {clear:both;background:#ffffff url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/fullboxshadow-bottom.png') no-repeat top center;padding-top:21px;}
+.cms-products-cms-info p {padding-bottom:4px;font-family:Arial, Helvetica, sans-serif;}
+
+/* Category Page ========================================================================= */
+.category-title { border:0; margin:0 0 7px; }
+.category-image { width:100%; overflow:hidden; margin:0 0 10px; text-align:left; }
+.category-image img {}
+.category-description { font-family:Arial, Helvetica, sans-serif; margin:0 0 10px; padding-bottom:15px; padding-right:60px; font-size:14px;}
+.catalog-category-view .shadow-seperator {background:#ffffff url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/shadow-seperator.png') no-repeat center bottom; padding-bottom:35px;}
+
+.catalog-category-view h1 { color:#229459; font-size:25px;}
+.catalog-category-view h2.overview-h2 { font-size:25px;padding-bottom:10px;}
+.catalog-category-view .category-grid li {width:207px;float:left;padding-right:24px;}
+.catalog-category-view .category-grid li:last-child {padding-right:0;}
+.catalog-category-view .category-grid li h2 {background:#ffffff url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/categoryteaser-top.png') no-repeat center center; height:46px; font-size:14px;}
+.catalog-category-view .category-grid p {background:#ffffff url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/categoryteaser-bottom.png') no-repeat center bottom; margin:0;padding-bottom:17px;}
+.catalog-category-view .category-grid li h2 a {text-decoration:none; color:#444444; display:block; padding:10px 30px 0 11px; line-height:1.1; height:38px;}
+.catalog-category-view .category-grid li h2 a span {padding-top:8px;display:block;}
+
+/* CMS Page ================================================== */
+.cms-page-view  h2 {padding-bottom:6px; padding-top:12px;}
+
+/* View Type: Grid */
+.category-products {position:relative;}
+.category-products ul.first li:before {position:absolute;content:url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/products-border-top.png');top:-11px;}
+.category-products ul.products-grid:before {position:absolute;content:url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/products-border-left.png');left:-4px;top:13px;}
+.products-grid { position:relative; }
+.products-grid.last { border-bottom:0; }
+.products-grid li.item { float:left; padding:12px 4px 0 13px; background:transparent url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/products-border.png') no-repeat right bottom; width:149px; height:208px; overflow:hidden;}
+.products-grid .product-image { display:block; width:135px; height:135px; margin:0 0 10px; }
+.products-grid .product-name { margin:0 0 5px; font-weight:normal; font-size:13px; }
+.products-grid .product-name a {}
+.products-grid .price-box { margin:5px 0 0 0; display:none;}
+.products-grid .availability { line-height:21px; }
+.products-grid .actions { position:absolute; bottom:12px; }
+.col2-left-layout .products-grid,
+.col2-right-layout .products-grid { /* width:632px; */ margin:0 0 0 5px; }
+.col1-layout .products-grid { width:790px; margin:0 auto; }
+
+/* View Type: List */
+.products-list li.item { border-bottom:1px solid #ddd; padding:12px 10px; }
+.products-list li.item.last { border-bottom:0; }
+.products-list .product-image { float:left; width:135px; height:135px; margin:0 0 10px; }
+.products-list .product-shop { margin-left:150px; }
+.products-list .product-name { margin:0 0 5px; font-weight:normal; font-size:13px; }
+.products-list .product-name a {}
+.products-list .price-box { float:left; margin:3px 13px 5px 0; }
+.products-list .availability { float:left; margin:3px 0 0; }
+.products-list .desc { clear:both; padding:6px 0 0; margin:0 0 15px; line-height:1.35; }
+.products-list .desc .link-learn { font-size:11px; }
+.products-list .add-to-links { clear:both; }
+.products-list .add-to-links li { display:inline; }
+.products-list .add-to-links .separator { display:inline; margin:0 2px; }
+/* ======================================================================================= */
+
+
+/* Product View ========================================================================== */
+/* Rating */
+.no-rating { margin:0; }
+
+.ratings { font-size:11px; line-height:1.25; margin:7px 0; }
+.ratings strong { float:left; margin:1px 3px 0 0; }
+.ratings .rating-links { margin:0; }
+.ratings .rating-links .separator { margin:0 2px; }
+.ratings dt {}
+.ratings dd {}
+.rating-box { width:69px; height:13px; font-size:0; line-height:0; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/bkg_rating.gif) 0 0 repeat-x; text-indent:-999em; overflow:hidden; }
+.rating-box .rating { float:left; height:13px; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/bkg_rating.gif) 0 100% repeat-x; }
+.ratings .rating-box { float:left; margin-right:3px; }
+.ratings .amount {}
+
+.ratings-table th,
+.ratings-table td { font-size:11px; line-height:1.15; padding:3px 0; }
+.ratings-table th { font-weight:normal; padding-right:8px; }
+
+/* Availability */
+.availability { margin:0; }
+.availability span { font-weight:normal; }
+.availability.in-stock span {}
+.availability.out-of-stock span { color:#d83820; }
+
+.availability-only { margin:0 0 7px; }
+.availability-only a { background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/i_availability_only_arrow.gif) 100% 0 no-repeat; cursor:pointer; padding-right:15px; }
+.availability-only .expanded { background-position:100% -15px; }
+.availability-only strong {}
+
+.availability-only-details { margin:0 0 7px; }
+.availability-only-details th { background:#f2f2f2; font-size:10px; padding:0 8px; }
+.availability-only-details td { border-bottom:1px solid #ddd; font-size:11px; padding:2px 8px 1px; }
+.availability-only-details tr.odd td.last {}
+
+/* Email to a Friend */
+.email-friend {}
+
+/* Alerts */
+.alert-price {}
+.alert-stock {}
+
+/********** < Product Prices */
+.price { white-space:nowrap !important; }
+
+.price-box {}
+.price-box .price { font-weight:normal; }
+
+/* Regular price */
+.regular-price {}
+.regular-price .price { font-weight:normal; }
+
+/* Old price */
+.old-price {}
+.old-price .price-label { white-space:nowrap; }
+.old-price .price { font-weight:normal; text-decoration:line-through; }
+
+/* Special price */
+.special-price {}
+.special-price .price-label { font-weight:normal; white-space:nowrap; }
+.special-price .price { font-weight:normal; }
+
+/* Minimal price (as low as) */
+.minimal-price {}
+.minimal-price .price-label { font-weight:normal; white-space:nowrap; }
+
+.minimal-price-link { display:block; }
+.minimal-price-link .label {}
+.minimal-price-link .price { font-weight:normal; }
+
+/* Excluding tax */
+.price-excluding-tax { display:block; }
+.price-excluding-tax .label { white-space:nowrap; }
+.price-excluding-tax .price { font-weight:normal; }
+
+/* Including tax */
+.price-including-tax { display:block; }
+.price-including-tax .label { white-space:nowrap; }
+.price-including-tax .price { font-weight:normal; }
+
+/* Configured price */
+.configured-price {}
+.configured-price .price-label { font-weight:normal; white-space:nowrap; }
+.configured-price .price { font-weight:normal; }
+
+/* FPT */
+.weee { display:block; font-size:11px; color:#444; }
+.weee .price { font-size:11px; font-weight:normal; }
+
+/* Excl tax (for order tables) */
+.price-excl-tax  { display:block; }
+.price-excl-tax .label { display:block; white-space:nowrap; }
+.price-excl-tax .price { display:block; }
+
+/* Incl tax (for order tables) */
+.price-incl-tax { display:block; }
+.price-incl-tax .label { display:block; white-space:nowrap; }
+.price-incl-tax .price { display:block; font-weight:normal; }
+
+/* Price range */
+.price-from {}
+.price-from .price-label { font-weight:normal; white-space:nowrap; }
+
+.price-to {}
+.price-to .price-label { font-weight:normal; white-space:nowrap; }
+
+/* Price notice next to the options */
+.price-notice { padding-left:10px; }
+.price-notice .price { font-weight:normal; }
+
+/* Price as configured */
+.price-as-configured {}
+.price-as-configured .price-label { font-weight:normal; white-space:nowrap; }
+
+.price-box-bundle {}
+/********** Product Prices > */
+
+/* Tier Prices */
+.tier-prices .price { font-weight:normal; }
+.tier-prices .benefit {}
+
+.tier-prices-grouped {}
+
+/* Add to Links */
+.add-to-links .separator { display:none; }
+
+/* Add to Cart */
+.add-to-cart label { float:left; margin-right:5px; }
+.add-to-cart .qty { float:left; }
+.add-to-cart button.button { float:left; margin-left:5px; }
+.add-to-cart .paypal-logo { clear:left; text-align:right; }
+.add-to-cart .paypal-logo .paypal-or { clear:both; display:block; margin:5px 60px 5px 0; }
+.product-view .add-to-cart .paypal-logo { margin:0; }
+
+/* Add to Links + Add to Cart */
+.add-to-box {}
+.add-to-box .add-to-cart { float:left; }
+.add-to-box .or { float:left; margin:0 10px; }
+.add-to-box .add-to-links { float:left; }
+
+
+.product-view {}
+
+.product-essential {}
+
+.product-collateral .box-collateral { margin:0 0 15px; }
+.product-collateral .box-collateral .std {color:#87888a;}
+
+/* Product Images */
+.product-view .product-img-box { float:left; width:267px; padding-right:26px; }
+.col3-layout .product-view .product-img-box { float:none; margin:0 auto; }
+.product-view .product-img-box .product-image { border:1px solid #ddd; }
+.product-view .product-img-box .product-image-zoom { position:relative; width:265px; height:265px; overflow:hidden; z-index:9; }
+.product-view .product-img-box .product-image-zoom img { position:absolute; left:0; top:0; }
+.product-view .product-img-box .zoom-notice { text-align:center; display:none; }
+.product-view .product-img-box .zoom { display:none; position:relative; z-index:9; height:18px; margin:0 auto 13px; padding:0 28px; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/slider_bg.gif) 50% 50% no-repeat; cursor:pointer; }
+.product-view .product-img-box .zoom.disabled { -moz-opacity:.3; -webkit-opacity:.3; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";/*IE8*/ opacity:.3; }
+.product-view .product-img-box .zoom #track { position:relative; height:18px; }
+.product-view .product-img-box .zoom #handle { position:absolute; left:0; top:-1px; width:9px; height:22px; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/magnifier_handle.gif) 0 0 no-repeat;  }
+.product-view .product-img-box .zoom .btn-zoom-out { position:absolute; left:2px; top:0; }
+.product-view .product-img-box .zoom .btn-zoom-in { position:absolute; right:2px; top:0; }
+.product-view .product-img-box .more-views ul { margin-left:-4px }
+.product-view .product-img-box .more-views li { float:left; padding:1px; background-color:#ddd; margin:0 0 8px 4px ; }
+
+.product-image-popup { margin:0 auto; }
+.product-image-popup .buttons-set { float:right; clear:none; border:0; margin:0; padding:0; }
+.product-image-popup .nav { margin:0 100px; text-align:center; }
+.product-image-popup .image { display:block; }
+.product-image-popup .image-label {}
+
+/* Product Shop */
+.product-view .product-shop { width:445px; padding-bottom:24px; font-size:12px;color:#444444;}
+.product-view .product-shop table th, .product-view .product-shop table td {border-color:1px solid #e8e8e8;}
+.product-view .product-shop th {background-color:#229459; color:#ffffff;}
+.col1-layout .product-view .product-shop { float:right; width:700px; }
+.col3-layout .product-view .product-shop { float:none; width:auto; }
+.product-view .product-name {padding-bottom:15px;}
+.product-view .short-description {}
+
+/* Other Products */
+.product-view .other-product ul li {float:left;padding-left:13px; padding-right:3px;width:153px;height:170px; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/product-gallery.png) top left no-repeat;}
+.product-view .other-product ul li img {margin-top:2px;}
+.product-view .other-product ul {height:161px; /* overflow:hidden; */}
+.product-view .other-product ul li h3 {height:0px; overflow:hidden;}
+.product-view .other-product h2 {padding-bottom:15px;}
+
+/* Product Options */
+.product-options { padding:10px; margin:10px 0 0; border:1px solid #ddd; background-color:#f6f6f6; }
+.product-options dt label { font-weight:normal; }
+.product-options dt .qty-holder { float:right; }
+.product-options dt .qty-holder label { vertical-align:middle; }
+.product-options dt .qty-disabled { background:none; border:0; padding:3px; color:#000; }
+.product-options dd { margin:10px 0; }
+.product-options dl.last dd.last {}
+.product-options dd input.input-text { width:98%; }
+.product-options dd input.datetime-picker { width:150px; }
+.product-options dd .time-picker { display:-moz-inline-box; display:inline-block; padding:2px 0; vertical-align:middle; }
+.product-options dd textarea { width:98%; height:8em; }
+.product-options dd select { width:100%; }
+.product-options .options-list {}
+.product-options .options-list input.radio { float:left; margin:3px -18px 0 0; }
+.product-options .options-list input.checkbox { float:left; margin:3px -20px 0 0; }
+.product-options .options-list .label { display:block; margin-left:20px; }
+.product-options ul.validation-failed { padding:0 7px; }
+.product-options p.required { padding:15px 0 0; }
+
+.product-options-bottom { padding:10px; border:1px solid #ddd; border-top:0; }
+.product-options-bottom .price-box { margin:10px 0; }
+
+/* Grouped Product */
+.product-view .grouped-items-table {}
+
+/* Block: Description */
+.product-view .box-description {}
+.product-view .box-description ul {list-style-position:inside;}
+.product-view .box-description h2 {font-size:15px;font-weight:normal;}
+
+/* Block: Additional */
+.product-view .box-additional {}
+
+/* Block: Upsell */
+.product-view .box-up-sell {}
+.product-view .box-up-sell .products-grid td { width:25%; }
+
+/* Block: Tags */
+.product-view .box-tags {}
+.product-view .box-tags .form-add label { float:left; }
+.product-view .box-tags .form-add .input-box { float:left; width:260px; margin:0 5px; }
+.product-view .box-tags .form-add input.input-text { width:254px; }
+.product-view .box-tags .form-add p { clear:both; }
+
+/* Block: Reviews */
+.product-view .box-reviews {}
+.product-view .box-reviews .form-add {}
+
+/* Send a Friend */
+.send-friend {}
+/* ======================================================================================= */
+
+
+/* Content Styles ================================================================= */
+.product-name { font-size:1em; font-weight:normal; }
+.product-name a {}
+
+/* Product Tags */
+.tags-list li { display:inline; }
+
+/* Advanced Search */
+.advanced-search {}
+.advanced-search-amount {}
+.advanced-search-summary {}
+
+/* CMS Home Page */
+.cms-home .subtitle {}
+.cms-index-index .subtitle {}
+.cms-index-index h2 {background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/teaserimage-head.png) top right repeat-x; color:#444444; padding:9px 12px 9px 12px; box-shadow: 0 -1px 3px 1px #d0d0d0;border-bottom:1px solid #ffffff;}
+.cms-index-index .col2-set div {background-color:#444444;color:#ffffff;}
+.cms-index-index .col2-set p {margin:0;padding:12px 9px 12px 9px;line-height:1.6;}
+.cms-index-index .col2-set p a img {margin-left:-19px;}
+.cms-index-index .col2-set ul {list-style:none; padding:0 10px 2px 10px; background:transparent url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/startpage-seperator.png) center bottom no-repeat;}
+.cms-index-index .col2-set ul img {float:left;padding-right:15px;padding-top:5px;}
+.cms-index-index .col2-set ul li {display:block;padding-top:14px; clear:both;height:116px;position:relative;background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/startpage-seperator.png) top right no-repeat;}
+.cms-index-index .col2-set ul li p {height:59px;padding:0;overflow:hidden;}
+.cms-index-index .col2-set ul .learn-more {position:absolute;bottom:0;right:-9px;}
+.cms-index-index .col2-set ul .learn-more img {float:none;padding-right:0;}
+.cms-index-index .col2-set h3 {font-size:18px;font-weight:normal;color:#ffffff;padding-bottom:5px;}
+
+/* Sitemap */
+.page-sitemap .links { text-align:right; margin:0 8px -22px 0; }
+.page-sitemap .links a { text-decoration:none; position:relative; }
+.page-sitemap .links a:hover { text-decoration:underline; }
+.page-sitemap .sitemap { margin:12px; }
+.page-sitemap .sitemap a {}
+.page-sitemap .sitemap li { margin:3px 0; }
+.page-sitemap .sitemap li.level-0 { margin:10px 0 0; font-weight:normal; }
+.page-sitemap .sitemap li.level-0 a {}
+
+/* RSS */
+.rss-title h1 { background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/i_rss-big.png) 0 4px no-repeat; padding-left:27px; }
+.rss-table .link-rss { display:block; line-height:1.35; background-position:0 2px; }
+/* ======================================================================================= */
+
+
+/* Shopping Cart ========================================================================= */
+.cart {}
+
+/* Checkout Types */
+.cart .checkout-types { float:right; text-align:right; }
+.cart .title-buttons .checkout-types li { float:left; margin:0 0 5px 5px; }
+.cart .checkout-types .paypal-or { margin:0 8px; line-height:2.3; }
+.cart .totals .checkout-types .paypal-or { clear:both; display:block; padding:3px 55px 8px 0; line-height:1.0; font-size:11px; }
+
+/* Shopping Cart Table */
+.cart-table .item-msg { font-size:10px; }
+
+/* Shopping Cart Collateral boxes */
+.cart .cart-collaterals { padding:25px 0 0; }
+.cart .cart-collaterals .col2-set { float:left; width:700px; }
+
+.cart .crosssell {}
+.cart .crosssell h2 { font-size:13px; font-weight:normal; }
+.cart .crosssell .product-image { float:left; width:75px; height:75px; border:1px solid #ddd; }
+.cart .crosssell .product-details { margin-left:90px; }
+.cart .crosssell li.item { margin:12px 0; }
+
+/* Discount Codes & Estimate Shipping and Tax Boxes */
+.cart .discount,
+.cart .shipping {}
+
+/* Shopping Cart Totals */
+.cart .totals { float:right; }
+.cart .totals table { width:100%; }
+.cart .totals table th,
+.cart .totals table td { padding:5px; }
+.cart .totals table th { font-weight:normal; }
+.cart .totals table tfoot th {}
+
+/* Options Tool Tip */
+.item-options dt { font-weight:normal; font-style:italic; }
+.item-options dd { padding-left:10px; }
+.truncated { cursor:help; }
+.truncated a.dots { cursor:help; }
+.truncated a.details { cursor:help; }
+.truncated .truncated_full_value { position:relative; z-index:999; }
+.truncated .truncated_full_value .item-options { position:absolute; top:-99999em; left:-99999em; z-index:999; width:250px; padding:8px; border:1px solid #ddd; background-color:#f6f6f6; }
+.truncated .truncated_full_value .item-options > p { font-weight:normal; text-transform:uppercase; }
+.truncated .show .item-options { top:-20px; left:50%; }
+.col-left .truncated .show .item-options { left:30px; top:7px; }
+.col-right .truncated .show .item-options  { left:-240px; top:7px; }
+/* ======================================================================================= */
+
+
+
+/* Checkout ============================================================================== */
+/********** < Common Checkout Styles */
+/* Shipping and Payment methods */
+.sp-methods dt { font-weight:normal; }
+.sp-methods .price { font-weight:normal; }
+.sp-methods .form-list { padding-left:20px; }
+.sp-methods select.month { width:150px; margin-right:10px; }
+.sp-methods select.year { width:96px; }
+.sp-methods input.cvv { width:3em !important; }
+
+.sp-methods .checkmo-list li { margin:0 0 5px; }
+.sp-methods .checkmo-list label { width:135px; padding-right:10px; text-align:right; }
+.sp-methods .checkmo-list address { float:left; }
+
+.sp-methods .centinel-logos a { margin-right:3px; }
+.sp-methods .centinel-logos img { vertical-align:middle; }
+
+.sp-methods .release-amounts { margin:0.5em 0 1em; }
+.sp-methods .release-amounts button { float:left; margin:5px 10px 0 0; }
+
+.please-wait { float:right; margin-right:5px; }
+.please-wait img { vertical-align:middle; }
+.cvv-what-is-this { cursor:help; margin-left:5px; }
+
+/* Tooltip */
+.tool-tip { border:1px solid #ddd; background-color:#f6f6f6; padding:5px; position:absolute; z-index:9999; }
+.tool-tip .btn-close { text-align:right; }
+.tool-tip .btn-close a { display:block; margin:0 0 0 auto; width:15px; height:15px; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/btn_window_close.gif) 100% 0 no-repeat; text-align:left; text-indent:-999em; overflow:hidden; }
+.tool-tip .tool-tip-content { padding:5px; }
+
+/* Gift Messages */
+.gift-messages {}
+.gift-messages-form { border:1px solid #ddd; background-color:#f5f5f5; }
+.gift-messages-form { position:relative; }
+.gift-messages-form label { float:none !important; position:static !important; }
+.gift-messages-form h4 {}
+.gift-messages-form .whole-order {}
+.gift-messages-form .item { margin:0 0 10px; }
+.gift-messages-form .item .product-img-box { float:left; width:75px; }
+.gift-messages-form .item .product-image { margin:0 0 7px; }
+.gift-messages-form .item .number { margin:0; font-weight:normal; text-align:center; }
+.gift-messages-form .item .details { margin-left:90px; }
+.gift-messages-form .item .details .product-name {}
+
+.gift-message-link { display:block; background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/bkg_collapse.gif) 0 4px no-repeat; padding-left:20px; }
+.gift-message-link.expanded { background-position:0 -53px; }
+.gift-message-row {}
+.gift-message-row .btn-close { float:right; }
+.gift-message dt strong { font-weight:normal; }
+
+/* Checkout Agreements */
+.checkout-agreements {}
+.checkout-agreements li { margin:10px 0; }
+.checkout-agreements .agreement-content { border:1px solid #ddd; background-color:#f6f6f6; padding:5px; height:10em; overflow:auto; }
+.checkout-agreements .agree { padding:6px; }
+
+/* Centinel */
+.centinel {}
+.centinel .authentication { border:1px solid #ddd; background:#fff; }
+.centinel .authentication iframe { width:99%; height:400px; background:transparent !important; margin:0 !important; padding:0 !important; border:0 !important; }
+
+/* Generic Info Set */
+.info-set {}
+/********** Common Checkout Styles > */
+
+/* One Page Checkout */
+.block-progress {}
+.block-progress dt { font-weight:normal; }
+.block-progress dt.complete,
+.block-progress dd.complete { background-color:#f6f6f6; }
+
+.opc { border-bottom:1px solid #ddd; position:relative; }
+.opc li.section { border:1px solid #ddd; border-bottom:0; }
+
+.opc .buttons-set.disabled button.button { display:none; }
+.opc .buttons-set .please-wait { height:21px; line-height:21px; }
+
+.opc .step-title { background-color:#f6f6f6; padding:0 5px; text-align:right; }
+.opc .step-title .number { float:left; line-height:22px; margin-right:5px; }
+.opc .step-title h2 { float:left; }
+.opc .step-title a { display:none; float:right; }
+
+.opc .allow .step-title { cursor:pointer; }
+/*.opc .allow .step-title a { display:block; }*/
+
+.opc .active {}
+.opc .active .step-title { background-color:#ccc; cursor:default; }
+/*.opc .active .step-title a { display:none; }*/
+
+.opc .step { border-top:1px solid #ddd; padding:10px; position:relative; }
+.opc .step .tool-tip { right:10px; }
+
+.opc .order-review {}
+.opc .order-review .authentication {}
+.opc .order-review .warning-message {}
+
+/* Multiple Addresses Checkout */
+.checkout-progress { padding:0 50px; margin:10px 0; }
+.checkout-progress li { float:left; width:20%; border-top:5px solid #ccc; text-align:center; color:#ccc; }
+.checkout-progress li.active { border-top-color:#000; color:#000; }
+
+.multiple-checkout { position:relative; }
+.multiple-checkout .tool-tip { top:50%; margin-top:-120px; right:10px; }
+.multiple-checkout .grand-total { font-size:1.5em; text-align:right; }
+.multiple-checkout .grand-total big {}
+.multiple-checkout .grand-total .price {}
+/* ======================================================================================= */
+
+
+/* Account Login/Create Pages ============================================================ */
+.account-login {}
+.account-login .new-users {}
+.account-login .registered-users {}
+
+.account-create {}
+/* Account Login/Create Pages ============================================================ */
+
+/* Captcha */
+.captcha-note  {}
+.captcha-image { float:left; position:relative; }
+.captcha-img { border:1px solid #ccc; }
+.registered-users .captcha-image    {}
+#checkout-step-login .captcha-image {}
+.captcha-reload { position:absolute; top:2px; right:2px;}
+.captcha-reload.refreshing  { animation:rotate 1.5s infinite linear; -webkit-animation:rotate 1.5s infinite linear; -moz-animation:rotate 1.5s infinite linear; }
+
+@-webkit-keyframes rotate {
+    0% { -webkit-transform:rotate(0); }
+    0% { -webkit-transform:rotate(-360deg); }
+}
+@-moz-keyframes rotate {
+    0% { -moz-transform:rotate(0); }
+    0% { -moz-transform:rotate(-360deg); }
+}
+@keyframes rotate {
+    0% { transform:rotate(0); }
+    0% { transform:rotate(-360deg); }
+}
+
+/* Remember Me Popup ===================================================================== */
+.window-overlay { background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/window_overlay.png) repeat; background:rgba(0, 0, 0, 0.35); position:absolute; top:0; left:0; height:100%; width:100%; z-index:990; }
+
+.remember-me label {}
+.remember-me-popup {}
+.remember-me-popup h3 {}
+.remember-me-popup .remember-me-popup-head {}
+.remember-me-popup .remember-me-popup-head .remember-me-popup-close {}
+.remember-me-popup .remember-me-popup-body {}
+.remember-me-popup .remember-me-popup-body a {}
+/* Remember Me Popup ===================================================================== */
+
+
+/* My Account ============================================================================= */
+.my-account .title-buttons .link-rss { float:none; margin:0; }
+
+/********** < Dashboard */
+.dashboard {}
+.dashboard .welcome-msg {}
+
+/* Block: Recent Orders */
+.dashboard .box-recent { margin:10px 0; }
+
+/* Block: Account Information */
+.dashboard .box-info {}
+
+/* Block: Reviews */
+.dashboard .box-reviews .number { float:left; font-size:10px; font-weight:normal; line-height:1; color:#fff; margin:3px -20px 0 0; padding:2px 3px; background:#ddd; }
+.dashboard .box-reviews .details { margin-left:20px; }
+
+/* Block: Tags */
+.dashboard .box-tags .number { float:left; font-size:10px; font-weight:normal; line-height:1; color:#fff; margin:3px -20px 0 0; padding:2px 3px; background:#ddd; }
+.dashboard .box-tags .details { margin-left:20px; }
+/********** Dashboard > */
+
+/* Address Book */
+.addresses-list {}
+.addresses-list-additional li.item {}
+
+/* Order View */
+.order-info { border:1px solid #ddd; padding:5px; }
+.order-info dt,
+.order-info dd,
+.order-info ul,
+.order-info li { display:inline; }
+.order-info dt { font-weight:normal; }
+
+.order-date { margin:10px 0; }
+
+.order-info-box {}
+
+.order-items { width:100%; overflow-x:auto; }
+
+.order-additional { margin:15px 0; }
+/* Order Gift Message */
+.gift-message dt strong { color:#666; }
+.gift-message dd { font-size:13px; margin:5px 0 0; }
+/* Order Comments */
+.order-about dt { font-weight:normal; }
+.order-about dd { font-size:13px; margin:0 0 7px; }
+
+.tracking-table { margin:0 0 15px; }
+.tracking-table th { font-weight:normal; white-space:nowrap; }
+
+.tracking-table-popup { width:100%; }
+.tracking-table-popup th { font-weight:normal; white-space:nowrap; }
+.tracking-table-popup th,
+.tracking-table-popup td { padding:1px 8px; }
+
+/* Order Print Pages */
+.page-print .print-head {}
+.page-print .print-head img { float:left; }
+.page-print .print-head address { float:left; margin-left:15px; }
+/* Price Rewrites */
+.page-print .gift-message-link { display:none; }
+.page-print .price-excl-tax,
+.page-print .price-incl-tax { display:block; white-space:nowrap; }
+.page-print .cart-price,
+.page-print .price-excl-tax .label,
+.page-print .price-incl-tax .label,
+.page-print .price-excl-tax .price,
+.page-print .price-incl-tax .price { display:inline; }
+
+/* My Reviews */
+.product-review .product-img-box { float:left; width:140px;  }
+.product-review .product-img-box .product-image { display:block; width:125px; height:125px; }
+.product-review .product-img-box .label { font-size:11px; margin:0 0 3px; }
+.product-review .product-img-box .ratings .rating-box { float:none; display:block; margin:0 0 3px; }
+.product-review .product-details { margin-left:150px; }
+.product-review .product-name { font-size:16px; font-weight:normal; margin:0 0 10px; }
+.product-review h3 {}
+.product-review .ratings-table { margin:0 0 10px; }
+.product-review dt { font-weight:normal; }
+.product-review dd { font-size:13px; margin:5px 0 0; }
+/* ======================================================================================= */
+
+
+/* Footer ================================================================================ */
+.footer-wrapper {background:transparent url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/footer/footer-right.png') repeat-x right bottom; height:189px;position:relative;z-index:1;min-width:960px;}
+.footer-left {width: 50%;  background:transparent url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/footer/footer-left.png') repeat-x right bottom;position:absolute;bottom:0; height:189px;z-index:-1;}
+.footer-container { width: 960px; margin: 0 auto; background:transparent url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/footer/footer-center.png') no-repeat right bottom;}
+.footer {position:relative; padding:18px 0 18px 0; height:153px;}
+.footer .social-links{position:absolute;right:0;top:152px;}
+.footer .social-links ul li{display:inline;}
+.footer p { text-align:right; }
+.footer address { text-align:right; color:#ffffff; position:absolute; left:563px; top:157px; font-size:12px; font-family:Arial, Helvetica, sans-serif;}
+.footer .col5-set, .footer .col3-set { text-align:left; background:transparent url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/footer/footer-seperator-small.png') no-repeat right bottom; height:115px; }
+.footer .col5-set .col-1, .footer .col5-set .col-2, .footer .col5-set .col-3, .footer .col3-set .col-1, .footer .col3-set .col-2 { background:transparent url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/footer/footer-seperator.png') no-repeat left bottom; height:131px; }
+.footer .col5-set .col-4, .footer .col5-set .col-5, .footer .col3-set .col-3 { background:transparent url('http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/footer/footer-seperator-small.png') no-repeat left bottom; height:115px; }
+.footer .col5-set h4, .footer .col3-set h4 {font-size:20px; font-weight:normal; color:#ffffff; padding-bottom:6px;padding-left:15px;}
+.footer .col5-set ul, .footer .col3-set ul { padding-left:15px;}
+.footer .col5-set li, .footer .col3-set li { display:block; padding-bottom:2px; }
+.footer .col5-set li a, .footer .col3-set li a {color:#9c9c9c; text-decoration:none; font-size:12px; }
+/* ======================================================================================= */
+
+
+/* Clears ================================================================================ */
+.clearer:after,
+.header-container:after,
+.header-container .top-container:after,
+.header:after,
+.header .quick-access:after,
+#nav:after,
+.main:after,
+.footer:after,
+.footer-container .bottom-container:after,
+.col-main:after,
+.col2-set:after,
+.col3-set:after,
+.col4-set:after,
+.search-autocomplete li:after,
+.block .block-content:after,
+.block .actions:after,
+.block li.item:after,
+.block-poll li:after,
+.block-layered-nav .currently li:after,
+.page-title:after,
+.products-grid:after,
+.products-list li.item:after,
+.box-account .box-head:after,
+.dashboard .box .box-title:after,
+.box-reviews li.item:after,
+.box-tags li.item:after,
+.pager:after,
+.sorter:after,
+.ratings:after,
+.add-to-box:after,
+.add-to-cart:after,
+.product-essential:after,
+.product-collateral:after,
+.product-view .product-img-box .more-views ul:after,
+.product-view .product-shop .short-description:after,
+.product-view .box-description:after,
+.product-view .box-tags .form-add:after,
+.product-options .options-list li:after,
+.product-options-bottom:after,
+.product-review:after,
+.cart:after,
+.cart-collaterals:after,
+.cart .crosssell li.item:after,
+.opc .step-title:after,
+.checkout-progress:after,
+.multiple-checkout .place-order:after,
+.group-select li:after,
+.form-list li:after,
+.form-list .field:after,
+.buttons-set:after,
+.page-print .print-head:after,
+.advanced-search-summary:after,
+.gift-messages-form .item:after,
+.send-friend .form-list li p:after { display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }
+/* ======================================================================================= */
+/*.jcarousel-skin-tango .jcarousel-container {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+   border-radius: 10px;
+    background: #F0F6F9;
+    border: 1px solid #346F97;
+}*/
+
+.jcarousel-skin-tango .jcarousel-direction-rtl {
+	direction: rtl;
+}
+
+.jcarousel-skin-tango .jcarousel-container-horizontal {
+    width: 540px;
+    padding: 20px 40px;
+}
+
+.jcarousel-skin-tango .jcarousel-container-vertical {
+    width: 75px;
+    height: 245px;
+    padding: 40px 20px;
+}
+
+.jcarousel-skin-tango .jcarousel-clip {
+    overflow: hidden;
+}
+
+.jcarousel-skin-tango .jcarousel-clip-horizontal {
+    width:  510px;
+    height: 170px;
+}
+
+.jcarousel-skin-tango .jcarousel-clip-vertical {
+    width:  75px;
+    height: 245px;
+}
+
+.jcarousel-skin-tango .jcarousel-item {
+    width: 75px;
+    height: 75px;
+}
+
+.jcarousel-skin-tango .jcarousel-item-horizontal {
+	margin-left: 0;
+    /* margin-right: 10px; */
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-item-horizontal {
+	margin-left: 10px;
+    margin-right: 0;
+}
+
+.jcarousel-skin-tango .jcarousel-item-vertical {
+    margin-bottom: 10px;
+}
+
+.jcarousel-skin-tango .jcarousel-item-placeholder {
+    background: #fff;
+    color: #000;
+}
+
+/**
+ *  Horizontal Buttons
+ */
+.jcarousel-skin-tango .jcarousel-next-horizontal {
+    position: absolute;
+    top: 73px;
+    right: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/next-horizontal.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-next-horizontal {
+    left: 5px;
+    right: auto;
+    background-image: url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/prev-horizontal.png);
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-horizontal:focus {
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:active {
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:focus,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal {
+    position: absolute;
+    top: 73px;
+    left: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/prev-horizontal.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-prev-horizontal {
+    left: auto;
+    right: 5px;
+    background-image: url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/next-horizontal.png);
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-prev-horizontal:focus {
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:active {
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:focus,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
+/**
+ *  Vertical Buttons
+ */
+.jcarousel-skin-tango .jcarousel-next-vertical {
+    position: absolute;
+    bottom: 5px;
+    left: 43px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/next-vertical.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-vertical:hover,
+.jcarousel-skin-tango .jcarousel-next-vertical:focus {
+    background-position: 0 -32px;
+}
+
+.jcarousel-skin-tango .jcarousel-next-vertical:active {
+    background-position: 0 -64px;
+}
+
+.jcarousel-skin-tango .jcarousel-next-disabled-vertical,
+.jcarousel-skin-tango .jcarousel-next-disabled-vertical:hover,
+.jcarousel-skin-tango .jcarousel-next-disabled-vertical:focus,
+.jcarousel-skin-tango .jcarousel-next-disabled-vertical:active {
+    cursor: default;
+    background-position: 0 -96px;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-vertical {
+    position: absolute;
+    top: 5px;
+    left: 43px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/prev-vertical.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-vertical:hover,
+.jcarousel-skin-tango .jcarousel-prev-vertical:focus {
+    background-position: 0 -32px;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-vertical:active {
+    background-position: 0 -64px;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-disabled-vertical,
+.jcarousel-skin-tango .jcarousel-prev-disabled-vertical:hover,
+.jcarousel-skin-tango .jcarousel-prev-disabled-vertical:focus,
+.jcarousel-skin-tango .jcarousel-prev-disabled-vertical:active {
+    cursor: default;
+    background-position: 0 -96px;
+}
+.trigger {
+	cursor:pointer;
+	color:#545454;
+	font-size:16px;
+	padding:16px 8px 16px 8px;
+	display:block;
+	border-radius:5px;
+	background:#eeeeee;
+	background:linear-gradient(to bottom, #ffffff 2px,#eeeeee 0%, #ffffff 100%);
+	border-top:1px solid #dfdfdf;
+	border-bottom:1px solid #afafaf;
+	width:640px;
+	margin-top:5px;
+	box-shadow:1px 1px 1px 1px #dfdfdf;
+	font-weight:normal;
+	letter-spacing: 0.05em;
+	text-shadow: -1px -1px 0px #dfdfdf, 1px 1px 0px #fff;
+}
+.toggle_container {
+	display:block;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+	border-bottom:1px solid #afafaf;
+	border-left:1px solid #afafaf;
+	border-right:1px solid #afafaf;
+	background:#eeeeee;
+	background:linear-gradient(to bottom, #eaeaea 2px,#eeeeee 0%, #ffffff 100%);
+	width:646px;
+	margin-bottom:12px;
+	margin-left:5px;
+}
+.toggle_container tbody {
+	padding:10px;
+	display:block;
+}
+.learnmore-box {
+	margin-top:25px;
+}
+.learnmore-box .aside-heading {
+	color:#229459;
+	font-size:24px;
+	line-height:1.75;
+}
+.learnmore-box ul {
+	border-color:#d9f2e5 #26774d #295f45 #76c39c;
+	background-color:#0e773f;
+	background: linear-gradient(to bottom, #6ecb9a 0%,#35a66d 50%,#13874b 51%,#0f6f3d 100%);
+	padding:19px 14px;
+	list-style-image: url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/arrow-right.png);
+}
+.learnmore-box ul li {
+	margin-left:14px;
+}
+.learnmore-box ul li a {
+	color:#ffffff;
+	font-size:14px;
+	vertical-align:top;
+}
+.learnmore-box ul li div {
+	background: rgba(0,0,0,0.1);
+	color:#ffffff;
+}
+.learnmore-box ul li div p {
+	padding:19px 14px;
+}
+.learnmore-box ul li ul {
+	background: rgba(0,0,0,0.1);
+	color:#ffffff;
+	list-style-image:none;
+	padding:19px 0 19px 14px;
+}
+
+/** Retailersearch */
+.listbox{}
+	.listbox .ret_search{margin:0;border-bottom:1px solid #ccc;padding:10px;}
+	.listbox .ret_search:hover{background-color:#eee;}
+	.listbox .ret_search .rs_title{display:block;color:#229459;font-size:16px;}
+	.listbox .ret_search .rs_title2{color:#0075a7;font-size:14px;}
+	.listbox .ret_search .rs_details{display:block;}
+	.listbox .ret_search .rs_details .rs_name_2{display:block;}
+	.listbox .ret_search .rs_details .rs_zip{display:block;}
+	.listbox .ret_search .rs_details .rs_phone{display:block;}
+	.listbox .ret_search .rs_details .rs_country{display:none;}
+
+/** Retailer Search */
+
+.retailersearch-index-index .fieldset .legend {
+	background: #ffffff;
+	background: linear-gradient(to bottom, #FFFFFF 2px, #EEEEEE 0%, #FFFFFF 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border-bottom: 1px solid #AFAFAF;
+    border-radius: 5px 5px 5px 5px;
+    border-top: 1px solid #DFDFDF;
+    box-shadow: 1px 1px 1px 1px #DFDFDF;
+    color: #545454;
+    padding:4px 9px 4px 9px
+}
+.retailersearch-index-index .fieldset {
+	background: #ffffff;
+	background: linear-gradient(to bottom, #EAEAEA 2px, #EEEEEE 0%, #FFFFFF 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	color: #545454;
+	border: 1px solid #AFAFAF;
+	border-radius:5px;
+}
+.retailersearch-index-index .fieldset .form-list label {
+	color:#545454;
+}
+.retailersearch-index-index .fieldset h2 {
+	color:#545454;
+}
+.retailersearch-index-index .fieldset .ret_search span {
+	color:#545454; font-size:12px;
+}
+.retailersearch-index-index .fieldset .ret_search .rs_title {
+	font-size:14px;/*font-weight:bold;*/
+}
+.retailersearch-index-index .fieldset .ret_search:hover {
+	background: transparent !important;
+}
+.retailersearch-index-index .fieldset .ret_search a:after {
+	content:' >';
+}
+.retailersearch-index-index .buttons-set .button {
+	border-radius:5px;
+}
+.retailersearch-index-index .listbox .ret_search {
+	padding:10px 0;
+}
+
+/** Content Backbuttons */
+.cms-page-view .col-main button {
+	cursor:pointer;
+	background: url("http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/button.png") repeat-x scroll 0 0 transparent;
+    border: 1px solid #BBBBBB;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px 2px #CCCCCC;
+    color: #FFFFFF;
+    padding: 12px 20px;
+    text-decoration: none;
+}
+form#search_mini_form {
+    position: relative;
+    margin: 152px 148px 0 0;
+    z-index: 1000;
+    display: block;
+}
+
+.block-layered-nav {
+    display: none;
+}
+
+.gold50.catalog-category-view h1 {
+    color: #cfa74c;
+    margin-top: 50px;
+    margin-bottom: 0;
+    font-size: 350%;
+    font-weight: bold;
+    line-height: 0.9;
+}
+
+.gold50.category-history h2 {
+    color: #cfa74c;
+    font-weight: normal;
+}
+
+.gold50 .col-left .left-menu ul li.active > a {
+    background: url("http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/leftcolumn/menuleft-active-level0_50years.png") no-repeat scroll center top #444444;
+}
+
+.gold50 .col-left .left-menu ul li.active a:after {
+    content: "";
+}
+
+.gold50 .col-left .left-menu ul li ul li.active > a {
+    background: url("http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/leftcolumn/menuleft-active-level1_50years.png") no-repeat scroll center top #444444;
+}
+
+.gold50 .col-left .left-menu ul li ul li.level1 a:hover span {
+    color: #444;
+}
+
+.gold50 .col-left .left-menu ul li ul li a span {
+    padding-left: 12px;
+}
+
+.gold50 .category-description {
+    /*margin-top: 50px;*/
+    margin-bottom: 30px;
+}
+
+.gold50.catalog-category-view .category-grid li h2 {
+    background: url("http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/categoryteaser-top_50years.png") no-repeat scroll center center #FFFFFF;
+}
+
+.gold50 .aside-heading {
+    color: #cfa74c;
+}
+
+.gold50 .learnmore-box ul {
+    background: url("http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/block_downloads_background_links.png") no-repeat scroll center center #FFFFFF;
+    padding: 9px 14px;
+}
+
+.gold50 .learnmore-box ul a {
+    line-height: 1;
+    display: inline-block;
+    padding-top: 3px;
+    padding-bottom: 7px;
+}
+
+.gold50 .category-products {
+    margin-top: 50px;
+}
+
+.gold50 .product-name a, .gold50 .product-name h1, .gold50 .box-description h2, .gold50 .other-product h2, .gold50 .other-product h3, .gold50 .more-views h2 {
+    color: #cfa74c;
+}
+
+.gold50 .product-view .product-shop th {
+    background-color: #cfa74c;
+}
+
+.catalog-category-view.no-slider .main:before {
+    content: '';
+}
+
+.catalog-category-view.empty-on-purpose .note-msg {
+    display: none;
+}
+
+
+.modalbox {display:none;}
+/* Overlay */ #simplemodal-overlay {background-color:#000;}
+/* Container */
+.simplemodal-container {height:360px; width:600px; color:#bbb; background-color:#fff; border:4px solid #444;}
+.simplemodal-container .simplemodal-data {}
+.simplemodal-container code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; font-size:12px; margin-bottom:12px;}
+.simplemodal-container a {color:#ddd;}
+.simplemodal-container a.modalCloseImg {background:url(http://www.ungerglobal.com/usa/skin/frontend/default/unger/images/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+.simplemodal-container h3 {color:#84b8d9;}
+.simplemodal-wrap{overflow:hidden !important;}
