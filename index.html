@@ -34,53 +34,57 @@ var Calculator = function() {
   this.getToolsWeeklyLaborCost = function() {
     var num = (this.restrooms * this.fixturesPerRestroom * minutesToDisinfect * (this.laborRate / 60) * this.cleaningDaysPerWeek * this.shiftsPerDay);
 
-    return this.money(num);
+    return num;
   }
 
   this.getRestroomWeeklyLaborCost = function() {
     var num = (this.restrooms * this.fixturesPerRestroom * minutesForRestroom * (this.laborRate / 60) * this.cleaningDaysPerWeek * this.shiftsPerDay);
 
-    return this.money(num);
+    return num;
   }
 
   this.getToolsWeeklyWaterCost = function () {
     var num = ( ((this.fixturesPerRestroom * this.restrooms * averageSizePerRestroomFixture) / coverageForMopBucket ) * 6 * this.cleaningDaysPerWeek * this.shiftsPerDay );
 
-    return this.money(num);
+    return num;
   }
 
   this.getRestroomWeeklyWaterCost = function () {
     var num = ( this.getToolsWeeklyWaterCost() * (1 - waterConservation) );
 
-    return this.money(num);
+    return num;
   }
 
   this.getToolsWeeklyChemicalsCost = function () {
     var num = ( (this.getToolsWeeklyWaterCost() * 2) * (this.disinfectantCost * 0.0078125) );
 
-    return this.money(num);
+    return num;
   }
 
   this.getRestroomWeeklyChemicalsCost = function () {
     var num =  ( (this.getRestroomWeeklyWaterCost() * 2) * (this.disinfectantCost * 0.0078125) );
 
-    return this.money(num);
+    return num;
   }
 
   this.getAnnualLaborSavings = function () {
-    return (this.getToolsWeeklyLaborCost() - this.getRestroomWeeklyLaborCost()) * 52;
+    var num = (this.getToolsWeeklyLaborCost() - this.getRestroomWeeklyLaborCost()) * 52;
+    return num;
   }
 
   this.getAnnualWaterSavings = function () {
-    return ( (this.getToolsWeeklyWaterCost() - this.getRestroomWeeklyWaterCost() ) * 52);
+    var num = ( (this.getToolsWeeklyWaterCost() - this.getRestroomWeeklyWaterCost() ) * 52);
+    return num;
   }
 
   this.getAnnualChemicalsSavings = function () {
-    return ( (this.getToolsWeeklyChemicalsCost() - this.getRestroomWeeklyChemicalsCost() ) * 52 );
+    var num = ( (this.getToolsWeeklyChemicalsCost() - this.getRestroomWeeklyChemicalsCost() ) * 52 );
+    return num;
   }
 
   this.getAnnualStorageSavings = function () {
-    return ( ( (this.laborRate / 60) * 15) * this.cleaningDaysPerWeek * 52 * this.cartStorage * this.shiftsPerDay );
+    var num = ( ( (this.laborRate / 60) * 15) * this.cleaningDaysPerWeek * 52 * this.cartStorage * this.shiftsPerDay );
+    return num;
   }
 
   this.link = function (obj) {
@@ -140,6 +144,25 @@ var Calculator = function() {
 
 }
 
+Calculator.prototype.getPixelWidth = function(currentDollars, maxValue) {
+  var graphHeight = jQuery('.Graph--Background').height();
+  var max = maxValue || 10000; //Default monetary max
+
+  var pixelsPerDollar = graphHeight / max;
+
+  var x = currentDollars * pixelsPerDollar;
+  x = parseInt(x);
+
+  var effectiveMax = (graphHeight - 41);
+
+  if (x > effectiveMax) {
+    x = effectiveMax;
+  }
+
+  return x;
+
+}
+
 Calculator.prototype.propagate = function () {
 
   for (var name in this.links) {
@@ -147,25 +170,38 @@ Calculator.prototype.propagate = function () {
     var element = jQuery('#' + this.links[name]);
 
     if (!element) continue;
+    var cost = false;
 
     switch (name) {
       case 'weeklyToolsLabor':
-        element.text(this.getToolsWeeklyLaborCost());
+        element.text(this.money(this.getToolsWeeklyLaborCost()));
         break;
       case 'weeklyRestroomLabor':
-        element.text(this.getRestroomWeeklyLaborCost());
+        element.text(this.money(this.getRestroomWeeklyLaborCost()));
         break;
       case 'weeklyToolsWater':
-        element.text(this.getToolsWeeklyWaterCost());
+        element.text(this.money(this.getToolsWeeklyWaterCost()));
         break;
       case 'weeklyRestroomWater':
-        element.text(this.getRestroomWeeklyWaterCost());
+        element.text(this.money(this.getRestroomWeeklyWaterCost()));
         break;
       case 'weeklyToolsChemicals':
-        element.text(this.getToolsWeeklyChemicalsCost());
+        element.text(this.money(this.getToolsWeeklyChemicalsCost()));
         break;
       case 'weeklyRestroomChemicals':
-        element.text(this.getRestroomWeeklyChemicalsCost());
+        element.text(this.money(this.getRestroomWeeklyChemicalsCost()));
+        break;
+      case 'annualLaborSavings':
+        //element
+        cost = this.getAnnualLaborSavings();
+      case 'annualWaterSavings':
+        if (!cost) cost = this.getAnnualWaterSavings();
+      case 'annualChemicalSavings':
+        if (!cost) cost = this.getAnnualChemicalsSavings();
+
+        var newHeight = this.getPixelWidth(cost);
+        jQuery('.Graph--Amount', element).text('$' + this.money(cost, 0, 0));
+        element.css('height', newHeight + 'px');
         break;
     }
 
@@ -445,7 +481,11 @@ var calc = new Calculator();
     weeklyRestroomWater: 'CalculatorRestroomWaterValue',
 
     weeklyToolsChemicals: 'CalculatorToolsChemicalsValue',
-    weeklyRestroomChemicals: 'CalculatorRestroomChemicalsValue'
+    weeklyRestroomChemicals: 'CalculatorRestroomChemicalsValue',
+
+    annualLaborSavings: 'Graph--Labor-Savings-Bar',
+    annualWaterSavings: 'Graph--Water-Savings-Bar',
+    annualChemicalSavings: 'Graph--Chemical-Savings-Bar'
 
   });
 
